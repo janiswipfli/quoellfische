@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Shot-Rangliste | Quöllfische Steinen</title>
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/board.css">
+</head>
+<body class="board">
+
+  <header class="top">
+    <div class="brand">
+      <img class="brand-logo" src="assets/logo.png" alt="Logo Quöllfische Steinen">
+      <div class="lockup brand-lockup">
+        <img class="lockup-wordmark" src="assets/wordmark.svg" alt="Quöllfisch">
+        <p class="lockup-sub">Quöllfische Steinen<span>Since 2020</span></p>
+      </div>
+    </div>
+    <div class="meta">
+      <p class="event" id="event">Shot-Rangliste</p>
+      <div class="stats">
+        <p class="stat"><span class="stat-num" id="total">0</span><span class="stat-label">Shots total</span></p>
+        <p class="stat"><span class="stat-num" id="count">0</span><span class="stat-label">Gruppen</span></p>
+      </div>
+    </div>
+  </header>
+
+  <main class="stage" id="stage">
+    <section class="podium" id="podium" aria-label="Top 3"></section>
+    <section class="rest" id="rest" aria-label="Weitere Plätze">
+      <ol class="list" id="list"></ol>
+    </section>
+    <section class="empty" id="empty" hidden>
+      <p class="empty-title">Noch keine Gruppe am Start.</p>
+      <p class="empty-text">Erfasst eure Gruppe an der Bar. Der erste Shot bringt euch aufs Podest.</p>
+    </section>
+  </main>
+
+  <footer class="ticker" aria-label="Letzte Shots">
+    <p class="ticker-label">Letzte Shots</p>
+    <div class="ticker-track" id="ticker"></div>
+  </footer>
+
+  <div class="takeover" id="takeover" hidden aria-live="assertive">
+    <div class="takeover-crown"></div>
+    <p class="takeover-kicker">Neue Nummer 1</p>
+    <p class="takeover-name" id="takeover-name"></p>
+  </div>
+
+  <div class="corner" id="corner">
+    <a class="corner-btn" href="steuerung.html" target="qf-steuerung">Steuerung</a>
+    <button class="corner-btn" id="fs" type="button">Vollbild</button>
+  </div>
+
+  <script src="assets/store.js"></script>
+  <script src="assets/board.js"></script>
+</body>
+</html>

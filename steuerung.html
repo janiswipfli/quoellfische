@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Steuerung | Quöllfische Steinen</title>
+  <meta name="theme-color" content="#000000">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/admin.css">
+</head>
+<body class="admin">
+
+  <header class="a-top">
+    <div class="a-brand">
+      <img class="a-logo" src="assets/logo.png" alt="Logo Quöllfische Steinen">
+      <div class="lockup a-lockup">
+        <img class="lockup-wordmark" src="assets/wordmark.svg" alt="Quöllfisch">
+        <p class="lockup-sub">Quöllfische Steinen<span>Since 2020</span></p>
+      </div>
+    </div>
+    <div class="a-top-actions">
+      <span class="a-total"><b id="total">0</b> Shots total</span>
+      <a class="btn btn-ghost" href="index.html" target="qf-rangliste">Rangliste öffnen</a>
+    </div>
+  </header>
+
+  <main class="a-main">
+    <section class="a-add" aria-labelledby="add-title">
+      <h1 id="add-title" class="a-h">Gruppe erfassen</h1>
+      <form id="add-form" class="a-add-row" autocomplete="off">
+        <label class="sr-only" for="add-name">Gruppenname</label>
+        <input id="add-name" class="input input-xl" maxlength="32" placeholder="Name eurer Gruppe" enterkeyhint="done">
+        <button class="btn btn-solid btn-xl" type="submit">Gruppe erfassen</button>
+      </form>
+      <p class="a-msg" id="add-msg" role="status"></p>
+    </section>
+
+    <section class="a-groups" aria-labelledby="groups-title">
+      <div class="a-groups-head">
+        <h2 id="groups-title" class="a-h">Shots vergeben</h2>
+        <div class="a-tools">
+          <label class="sr-only" for="search">Gruppe suchen</label>
+          <input id="search" class="input" type="search" placeholder="Gruppe suchen">
+          <div class="seg" role="group" aria-label="Sortierung">
+            <button type="button" data-sort="az" aria-pressed="true">A bis Z</button>
+            <button type="button" data-sort="rank" aria-pressed="false">Rang</button>
+          </div>
+        </div>
+      </div>
+      <p class="a-hint">Pro getrunkenem Shot einmal auf <b>+1 Shot</b> tippen.</p>
+      <div class="tiles" id="tiles"></div>
+      <p class="a-empty" id="tiles-empty" hidden>Noch keine Gruppe erfasst. Oben den ersten Namen eingeben.</p>
+    </section>
+
+    <section class="a-settings" aria-labelledby="settings-title">
+      <h2 id="settings-title" class="a-h">Einstellungen</h2>
+      <div class="set-grid">
+        <form class="set" id="event-form">
+          <label for="event-name">Titel auf der Rangliste</label>
+          <div class="a-add-row">
+            <input id="event-name" class="input" maxlength="48" placeholder="Shot-Rangliste">
+            <button class="btn btn-ghost" type="submit">Titel speichern</button>
+          </div>
+        </form>
+        <div class="set">
+          <p class="set-label">Sicherung</p>
+          <div class="btn-row">
+            <button class="btn btn-ghost" type="button" id="export">Backup herunterladen</button>
+            <label class="btn btn-ghost" for="import">Backup laden</label>
+            <input id="import" type="file" accept="application/json,.json" hidden>
+          </div>
+        </div>
+        <div class="set">
+          <p class="set-label">Zurücksetzen</p>
+          <div class="btn-row">
+            <button class="btn btn-danger" type="button" id="reset-scores">Alle Shots auf 0</button>
+            <button class="btn btn-danger" type="button" id="reset-all">Alles löschen</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" hidden>
+    <span id="toast-text"></span>
+    <button type="button" id="toast-undo">Rückgängig</button>
+  </div>
+
+  <dialog class="dlg" id="dlg">
+    <form method="dialog" class="dlg-body">
+      <h3 class="dlg-title" id="dlg-title">Gruppe umbenennen</h3>
+      <input class="input" id="dlg-input" maxlength="32">
+      <p class="a-msg" id="dlg-msg"></p>
+      <div class="btn-row">
+        <button class="btn btn-ghost" value="cancel" type="submit">Abbrechen</button>
+        <button class="btn btn-solid" value="ok" id="dlg-ok" type="submit">Speichern</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="assets/store.js"></script>
+  <script src="assets/admin.js"></script>
+</body>
+</html>
